@@ -1,11 +1,19 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import {
+    Briefcase,
+    ChevronsLeft,
+    FolderOpen,
+    MenuIcon,
+    MessagesSquare,
+    UserSquare,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./user-item";
+import { useRouter } from "next/navigation";
 
 export const LeftNavigation = () => {
     const pathname = usePathname();
@@ -15,6 +23,7 @@ export const LeftNavigation = () => {
     const navbarRef = useRef<ElementRef<"div">>(null);
     const [isResetting, setIsResetting] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(isMobile);
+    const router = useRouter();
 
     useEffect(() => {
         if (isMobile) {
@@ -115,8 +124,61 @@ export const LeftNavigation = () => {
                 <div>
                     <UserItem />
                 </div>
-                <div className="mt-4">
-                    <p>Documents</p>
+                <div className="mt-4 flex px-8 pt-4">
+                    <p className="text-[0.94rem] text-[#686868]">Favorites</p>
+                    <p className="text-[0.94rem] text-[#484848] ml-auto">
+                        Recently
+                    </p>
+                </div>
+                <div className="flex-col pt-4 px-8">
+                    <div className="flex">
+                        <p className="text-[0.94rem] text-[#686868]">•</p>
+                        <p className="text-[0.94rem] ml-4">Overview</p>
+                    </div>
+                    <div className="flex mt-4">
+                        <p className="text-[0.94rem] text-[#686868]">•</p>
+                        <p className="text-[0.94rem] ml-4">Dashboards</p>
+                    </div>
+                </div>
+                <div className="flex-col px-8 mt-10">
+                    <p className="text-[0.94rem] text-[#686868]">Pages</p>
+                    <div className="flex-col mt-4">
+                        <div
+                            onClick={() => router.push("/")}
+                            className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
+                            <UserSquare className="w-5 h-5" />
+                            <p className="text-[#CBCBCB] text-[0.94rem]">
+                                Intro
+                            </p>
+                        </div>
+                        <div
+                            onClick={() => router.push("/design")}
+                            className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
+                            <FolderOpen className="w-5 h-5" />
+                            <p className="text-[#CBCBCB] text-[0.94rem]">
+                                Design
+                            </p>
+                        </div>
+                        <div
+                            onClick={() => router.push("/work")}
+                            className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
+                            <Briefcase className="w-5 h-5" />
+                            <p className="text-[#CBCBCB] text-[0.94rem]">
+                                Work
+                            </p>
+                        </div>
+                        <div
+                            onClick={() => router.push("/social")}
+                            className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
+                            <MessagesSquare className="w-5 h-5" />
+                            <p className="text-[#CBCBCB] text-[0.94rem]">
+                                Social
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="mt-auto flex">
+                    <p>Matthew</p>
                 </div>
                 <div
                     onMouseDown={handleMouseDown}
