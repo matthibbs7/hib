@@ -15,16 +15,16 @@ export const UserItem = () => {
             <DropdownMenuTrigger asChild>
                 <div
                     role="button"
-                    className="flex items-center text-sm p-3 w-full hover:bg-primary/5">
-                    <div className="gap-x-2 flex items-center max-w-[150px]">
-                        <Avatar className="h-5 w-5">
-                            <AvatarImage src={""} />
+                    className="flex items-center h-[72px] text-sm p-3 w-full hover:bg-primary/5">
+                    <div className="gap-x-4 px-4 flex items-center max-w-[200px]">
+                        <Avatar className="h-7 w-7">
+                            <AvatarImage src={"/me.png"} />
                         </Avatar>
-                        <span className="text-start font-medium line-clamp-1">
-                            Matt&apos;s Jotion
+                        <span className="text-start line-clamp-1">
+                            Matthew Hibbs
                         </span>
                     </div>
-                    <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
+                    <ChevronsLeftRight className="rotate-90 ml-2 text-[#686868] h-5 w-5" />
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent

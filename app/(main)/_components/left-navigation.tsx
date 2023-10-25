@@ -124,7 +124,7 @@ export const LeftNavigation = () => {
                 <div>
                     <UserItem />
                 </div>
-                <div className="mt-4 flex px-8 pt-4">
+                <div className="mt-[-10px] flex px-8 pt-4">
                     <p className="text-[0.94rem] text-[#686868]">Favorites</p>
                     <p className="text-[0.94rem] text-[#484848] ml-auto">
                         Recently
@@ -140,7 +140,7 @@ export const LeftNavigation = () => {
                         <p className="text-[0.94rem] ml-4">Dashboards</p>
                     </div>
                 </div>
-                <div className="flex-col px-8 mt-10">
+                <div className="flex-col px-8 mt-10 mb-auto">
                     <p className="text-[0.94rem] text-[#686868]">Pages</p>
                     <div className="flex-col mt-4">
                         <div
@@ -151,14 +151,26 @@ export const LeftNavigation = () => {
                                 Intro
                             </p>
                         </div>
-                        <div
-                            onClick={() => router.push("/design")}
-                            className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
-                            <FolderOpen className="w-5 h-5" />
-                            <p className="text-[#CBCBCB] text-[0.94rem]">
-                                Design
-                            </p>
-                        </div>
+                        {pathname === "/design" ? (
+                            <div
+                                onClick={() => router.push("/design")}
+                                className="flex items-center gap-3 bg-[#323232] px-5 py-1.5 rounded-md border-l-4 border-[#C7C6F8]">
+                                <FolderOpen className="w-5 h-5" />
+                                <p className="text-[#CBCBCB] text-[0.94rem]">
+                                    Design
+                                </p>
+                            </div>
+                        ) : (
+                            <div
+                                onClick={() => router.push("/design")}
+                                className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
+                                <FolderOpen className="w-5 h-5" />
+                                <p className="text-[#CBCBCB] text-[0.94rem]">
+                                    Design
+                                </p>
+                            </div>
+                        )}
+
                         <div
                             onClick={() => router.push("/work")}
                             className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
@@ -177,8 +189,10 @@ export const LeftNavigation = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-auto flex">
-                    <p>Matthew</p>
+                <div className="flex mb-[90px] px-6">
+                    <p className="text-[#484848] text-[10px] ">
+                        © hib.biz [2023].
+                    </p>
                 </div>
                 <div
                     onMouseDown={handleMouseDown}

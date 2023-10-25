@@ -6,7 +6,7 @@ import { RightNavigation } from "./_components/right-navigation";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <div className="h-full flex dark:bg-[#1f1f1f]">
+        <div className="h-full flex dark:bg-[#161616]">
             <LeftNavigation />
             <div className="h-full flex-col w-full">
                 <Navbar />

@@ -8,7 +8,10 @@ const Navbar = () => {
             <BookMarked className="h-5 w-5 p-0" />
             <p className="text-[#757575]">pages</p>
             <p className="text-[#757575]">/</p>
-            {pathname === "/" && <p className="text-[white]">intro</p>}
+
+            <p className="text-[white]">
+                {pathname === "/" ? "intro" : pathname.slice(1)}
+            </p>
             <div className="w-[160px] h-[26px] ml-auto flex bg-[#323232] rounded-md">
                 <input
                     className="w-full h-full bg-[#262626] rounded-md opacity-100 placeholder-[#545454] px-3 text-sm"

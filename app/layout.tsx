@@ -6,14 +6,14 @@ import { ThemeProvider } from "@/components/providers/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Orno.ai",
-    description: "Discover the undiscovered",
+    title: "hib.biz",
+    description: "learning and building",
     icons: {
         icon: [
             {
                 media: "(prefers-color-scheme: light)",
-                url: "/logo.svg",
-                href: "/logo.svg",
+                url: "/logo.png",
+                href: "/logo.png",
             },
             {
                 media: "(prefers-color-scheme: dark)",
