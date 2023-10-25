@@ -10,7 +10,7 @@ import { UserItem } from "./user-item";
 export const RightNavigation = () => {
     const pathname = usePathname();
     const isMobile = useMediaQuery("(max-width: 768px)");
-    const isResizingRef = useRef(false);
+    const isResizingRef2 = useRef(false);
     const sidebarRef2 = useRef<ElementRef<"aside">>(null);
     const navbarRef2 = useRef<ElementRef<"div">>(null);
     const [isResetting, setIsResetting] = useState(false);
@@ -20,7 +20,7 @@ export const RightNavigation = () => {
         if (isMobile) {
             collapse();
         } else {
-            resetWidth();
+            resetWidth(true);
         }
     }, [isMobile]);
 
@@ -36,46 +36,43 @@ export const RightNavigation = () => {
         event.preventDefault();
         event.stopPropagation();
 
-        isResizingRef.current = true;
+        isResizingRef2.current = true;
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-        if (!isResizingRef.current) return;
-        let newWidth = e.clientX;
-
+        if (!isResizingRef2.current) return;
+        let newWidth = window.innerWidth - e.clientX;
         if (newWidth < 240) newWidth = 240;
         if (newWidth > 480) newWidth = 480;
 
         if (sidebarRef2.current && navbarRef2.current) {
             sidebarRef2.current.style.width = `${newWidth}px`;
-            navbarRef2.current.style.setProperty("left", `${newWidth}px`);
-            navbarRef2.current.style.setProperty(
-                "width",
-                `calc(100% - ${newWidth}px)`
-            );
+            navbarRef2.current.style.setProperty("right", `${newWidth}px`);
+            navbarRef2.current.style.setProperty("width", `${newWidth}px)`);
         }
     };
 
     const handleMouseUp = () => {
-        isResizingRef.current = false;
+        isResizingRef2.current = false;
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
     };
 
-    const resetWidth = () => {
+    const resetWidth = (trigger: boolean) => {
         if (sidebarRef2.current && navbarRef2.current) {
             setIsCollapsed(false);
             setIsResetting(true);
 
-            sidebarRef2.current.style.width = isMobile ? "100%" : "240px";
+            if (trigger)
+                sidebarRef2.current.style.width = isMobile ? "100%" : "240px";
             navbarRef2.current.style.setProperty(
                 "width",
                 isMobile ? "0" : "calc(100% - calc(100% - 240px))"
             );
             navbarRef2.current.style.setProperty(
-                "left",
+                "right",
                 isMobile ? "100%" : "240px"
             );
             setTimeout(() => setIsResetting(false), 300);
@@ -89,7 +86,7 @@ export const RightNavigation = () => {
 
             sidebarRef2.current.style.width = "0";
             navbarRef2.current.style.setProperty("width", "100%");
-            navbarRef2.current.style.setProperty("left", "0");
+            navbarRef2.current.style.setProperty("right", "0");
             setTimeout(() => setIsResetting(false), 300);
         }
     };
@@ -99,13 +96,13 @@ export const RightNavigation = () => {
             <aside
                 ref={sidebarRef2}
                 className={cn(
-                    "group/sidebar bg-[#1c1c1c] h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
+                    "group/sidebar bg-[#161616] h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
                     isResetting && "transition-all ease-in-out duration-300",
                     isMobile && "w-0"
                 )}>
                 <div
                     onMouseDown={handleMouseDown}
-                    onClick={resetWidth}
+                    onClick={() => resetWidth(false)}
                     className="opacity-100 bg-[#323232] group-hover/sidebar:bg-primary/10 transition cursor-ew-resize absolute h-full w-[1px] left-0 top-0"
                 />
                 <div
@@ -134,7 +131,7 @@ export const RightNavigation = () => {
                 <nav className="bg-transparent px-3 py-2 w-full">
                     {isCollapsed && (
                         <MenuIcon
-                            onClick={resetWidth}
+                            onClick={() => resetWidth(true)}
                             className="h-6 w-6 text-muted-foreground"
                             role="button"
                         />

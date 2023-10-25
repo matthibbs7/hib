@@ -99,7 +99,7 @@ export const LeftNavigation = () => {
             <aside
                 ref={sidebarRef}
                 className={cn(
-                    "group/sidebar bg-[#1c1c1c] h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
+                    "group/sidebar bg-[#161616] h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
                     isResetting && "transition-all ease-in-out duration-300",
                     isMobile && "w-0"
                 )}>
