@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
     const pathname = usePathname();
     return (
-        <div className="w-full gap-6 bg-[#161616] items-center px-10 flex h-[72px] border-b-[1px] border-[#323232]">
+        <div className="w-full gap-6 bg-[#161616] items-center px-10 flex h-[56px] border-b-[1px] border-[#323232]">
             <BookMarked className="h-5 w-5 p-0" />
             <p className="text-[#757575]">pages</p>
             <p className="text-[#757575]">/</p>

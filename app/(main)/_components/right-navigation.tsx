@@ -1,11 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { ChevronsLeft, Forward, MenuIcon, Send } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { UserItem } from "./user-item";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 
 export const RightNavigation = () => {
     const pathname = usePathname();
@@ -96,7 +97,7 @@ export const RightNavigation = () => {
             <aside
                 ref={sidebarRef2}
                 className={cn(
-                    "group/sidebar bg-[#161616] h-full overflow-y-auto relative flex w-60 flex-col z-[99999]",
+                    "group/sidebar bg-[#161616] h-full overflow-y-auto relative flex w-60 px-4 flex-col z-[99999]",
                     isResetting && "transition-all ease-in-out duration-300",
                     isMobile && "w-0"
                 )}>
@@ -117,8 +118,17 @@ export const RightNavigation = () => {
                 <div>
                     <UserItem />
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 mb-auto">
                     <p>Documents</p>
+                </div>
+                <div className="flex items-center h-9 gap-x-2 mb-[80px]">
+                    <input
+                        className="w-full rounded-lg h-full text-sm placeholder-[#545454] px-4 bg-[#262626]"
+                        placeholder="Contribute to the conversation!"
+                    />
+                    <div className="flex items-center justify-center hover:cursor-pointer hover:opacity-80 w-16 h-8 rounded-md bg-[#E4F4FF]">
+                        <Forward className="h-6 w-6 text-[#161616]" />
+                    </div>
                 </div>
             </aside>
             <div

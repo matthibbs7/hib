@@ -143,33 +143,67 @@ export const LeftNavigation = () => {
                 <div className="flex-col px-8 mt-10 mb-auto">
                     <p className="text-[0.94rem] text-[#686868]">Pages</p>
                     <div className="flex-col mt-4">
-                        <div
-                            onClick={() => router.push("/")}
-                            className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
-                            <UserSquare className="w-5 h-5" />
-                            <p className="text-[#CBCBCB] text-[0.94rem]">
-                                Intro
-                            </p>
-                        </div>
+                        {pathname === "/" ? (
+                            <div
+                                onClick={() => router.push("/")}
+                                className="flex group items-center gap-3 py-[2.5px] hover:cursor-pointer">
+                                <div className="flex h-8 items-center bg-[#323232] rounded-md w-full gap-3">
+                                    <div className="h-5 w-1 rounded-sm opacity-100 bg-[#C7C6F8]"></div>
+                                    <UserSquare className="w-5 h-5 ml-2" />
+                                    <p className="text-[#CBCBCB] text-[0.94rem]">
+                                        Intro
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            <div
+                                onClick={() => router.push("/")}
+                                className="flex group items-center gap-3 py-[2.5px] hover:cursor-pointer">
+                                <div className="flex transition duration-200 h-8 items-center group-hover:bg-[#323232] rounded-md w-full gap-3">
+                                    <div className="h-5 w-1 transition duration-300 rounded-sm opacity-0 group-hover:opacity-100 bg-[#C7C6F8]"></div>
+                                    <UserSquare className="w-5 h-5 ml-2" />
+                                    <p className="text-[#CBCBCB] text-[0.94rem]">
+                                        Intro
+                                    </p>
+                                </div>
+                            </div>
+                        )}
                         {pathname === "/design" ? (
                             <div
                                 onClick={() => router.push("/design")}
-                                className="flex items-center gap-3 bg-[#323232] px-5 py-1.5 rounded-md border-l-4 border-[#C7C6F8]">
-                                <FolderOpen className="w-5 h-5" />
-                                <p className="text-[#CBCBCB] text-[0.94rem]">
-                                    Design
-                                </p>
+                                className="flex group items-center gap-3 py-[2.5px] hover:cursor-pointer">
+                                <div className="flex h-8 items-center bg-[#323232] rounded-md w-full gap-3">
+                                    <div className="h-5 w-1 rounded-sm opacity-100 bg-[#C7C6F8]"></div>
+                                    <FolderOpen className="w-5 h-5 ml-2" />
+                                    <p className="text-[#CBCBCB] text-[0.94rem]">
+                                        Design
+                                    </p>
+                                </div>
                             </div>
                         ) : (
                             <div
                                 onClick={() => router.push("/design")}
-                                className="flex items-center gap-3 hover:bg-[#323232] px-5 py-1.5 rounded-md hover:cursor-pointer border-l-4 border-[#161616] hover:border-[#C7C6F8]">
-                                <FolderOpen className="w-5 h-5" />
-                                <p className="text-[#CBCBCB] text-[0.94rem]">
-                                    Design
-                                </p>
+                                className="flex group items-center gap-3 py-[2.5px] hover:cursor-pointer">
+                                <div className="flex h-8 transition duration-200 items-center group-hover:bg-[#323232] rounded-md w-full gap-3">
+                                    <div className="h-5 w-1 transition duration-200 rounded-sm opacity-0 group-hover:opacity-100 bg-[#C7C6F8]"></div>
+                                    <FolderOpen className="w-5 h-5 ml-2" />
+                                    <p className="text-[#CBCBCB] text-[0.94rem]">
+                                        Design
+                                    </p>
+                                </div>
                             </div>
                         )}
+                        <div
+                            onClick={() => router.push("/")}
+                            className="flex group items-center gap-3 py-[2.5px] hover:cursor-pointer ">
+                            <div className="flex h-8 items-center group-hover:bg-[#323232] rounded-md w-full gap-3">
+                                <div className="h-5 w-1 rounded-sm opacity-0 group-hover:opacity-100 bg-[#C7C6F8]"></div>
+                                <Briefcase className="w-5 h-5 ml-2" />
+                                <p className="text-[#CBCBCB] text-[0.94rem]">
+                                    Work
+                                </p>
+                            </div>
+                        </div>
 
                         <div
                             onClick={() => router.push("/work")}
